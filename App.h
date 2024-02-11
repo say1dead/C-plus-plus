@@ -4,5 +4,11 @@
 
 #ifndef LAB_PROGA_2_APP_H
 #define LAB_PROGA_2_APP_H
-int StartOs();
+#include "AddToSet.h"
+#include "CheckIfIn.h"
+#include "Delete.h"
+#include "IntersectionOfTwo.h"
+#include "UnionOfTwo.h"
+
+void OS();
 #endif //LAB_PROGA_2_APP_H

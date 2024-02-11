@@ -1,5 +1,5 @@
 #include "App.h"
 int main() {
-    StartOs();
+    OS();
     return 0;
 }
