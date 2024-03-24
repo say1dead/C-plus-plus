@@ -162,12 +162,13 @@ public:
 
 
     void pushFront(const T& element) {
-        updateCapacity(capacity + 1);
+        setCapacity(capacity + 1);
 
         if (beginIndex == 0) {
             beginIndex = capacity - 1;
             beginOffset--;
-        } else {
+        }
+        else {
             beginIndex--;
         }
         bufferData[beginIndex] = element;
@@ -185,17 +186,19 @@ public:
     }
 
 
-    void pushBack(const T& element) {
-        updateCapacity(capacity + 1);
+    void pushBack(const T& element){
+        setCapacity(capacity + 1);
 
         bufferData[endIndex] = element;
-        if (endIndex == capacity - 1)
+        if (endIndex == capacity - 1){
             endOffset++;
+        }
         endIndex = (endIndex + 1) % capacity;
 
         if (size == capacity) {
-            if (beginIndex == capacity - 1)
+            if (beginIndex == capacity - 1){
                 beginOffset++;
+            }
             beginIndex = (beginIndex + 1) % capacity;
             size--;
         }
@@ -401,12 +404,32 @@ public:
         }
     }
     void insertIterator(iterator it, const T& value) {
-        int index = it - begin();
-        size_t pos = (beginIndex + 1) % capacity;
+        size_t pos = it - begin();
 
-        bufferData[pos] = value;
-        endIndex = (endIndex + 1) % capacity;
-        size++;
+        size_t insertIndex = (beginIndex + pos) % capacity;
+
+        if (size == 0 || insertIndex == endIndex) {
+            pushBack(value);
+        } else if (insertIndex == beginIndex) {
+            pushFront(value);
+        } else {
+            if (endIndex < beginIndex) {
+                if (insertIndex > beginIndex || insertIndex < endIndex) {
+                    endIndex = (endIndex + 1) % capacity;
+                }
+            } else {
+                if (insertIndex > beginIndex && insertIndex < endIndex) {
+                    endIndex = (endIndex + 1) % capacity;
+                }
+            }
+
+            for (size_t i = endIndex; i != insertIndex; i = (i - 1 + capacity) % capacity) {
+                bufferData[i] = bufferData[(i - 1 + capacity) % capacity];
+            }
+
+            bufferData[insertIndex] = value;
+            size++;
+        }
     }
 
     void popIterator(iterator it) {

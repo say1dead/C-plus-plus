@@ -1,11 +1,10 @@
 #include "Buffer.h"
-
 int main(){
     CircularBuffer<int> buffer(5);
 
     //вставка и удаление в конец
     std::cout << "---add and delete from back---\n";
-    std::cout << "TASK -> Back 1, 2, 3 and delete.\n";
+    std::cout  << "TASK -> Back 1, 2, 3 and delete.\n";
     buffer.pushBack(1);
     std::cout << '\n';
     buffer.Show(std::cout);
@@ -15,6 +14,7 @@ int main(){
     buffer.pushBack(3);
     std::cout << '\n';
     buffer.Show(std::cout);
+
     std::cout << "\n\ndelete\n";
     buffer.popBack();
     std::cout << '\n';
@@ -60,9 +60,12 @@ int main(){
     buffer.insertIterator(buffer.begin(), 2);
     std::cout << '\n';
     buffer.Show(std::cout);
+    buffer.insertIterator(buffer.end(), 3);
+    std::cout << '\n';
+    buffer.Show(std::cout);
 
 
-    std::cout << "\n---front and back---\n";
+    std::cout << "\n\n---front and back---\n";
     std::cout << "TASK -> cout front and back\n";
     buffer.clear();
     buffer.pushBack(3);
