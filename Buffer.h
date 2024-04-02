@@ -70,7 +70,13 @@ public:
 
     }
 
-
+    void setMaxCapacity(size_t newMaxCapacity) {
+        if (newMaxCapacity >= minCapacity && newMaxCapacity >= size) {
+            maxCapacity = newMaxCapacity;
+        } else {
+            std::cout << "Error: Invalid max capacity value.\n";
+        }
+    }
 
     CircularBuffer(size_t maxCapacity) {
         this->maxCapacity = maxCapacity;
@@ -141,14 +147,6 @@ public:
             minCapacity = capacity;
             if (this->capacity < minCapacity)
                 setCapacity(minCapacity);
-        }
-    }
-
-    void setMaxCapacity(size_t capacity) {
-        if (capacity >= 0) {
-            maxCapacity = capacity;
-            if (this->capacity > maxCapacity)
-                setCapacity(maxCapacity);
         }
     }
 

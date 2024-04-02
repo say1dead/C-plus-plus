@@ -63,6 +63,11 @@ int main(){
     buffer.insertIterator(buffer.end(), 3);
     std::cout << '\n';
     buffer.Show(std::cout);
+    std::cout << "\n\ndelete\n";
+
+    buffer.popIterator(buffer.begin());
+    std::cout << '\n';
+    buffer.Show(std::cout);
 
 
     std::cout << "\n\n---front and back---\n";
@@ -78,8 +83,10 @@ int main(){
     buffer.clear();
 
     std::cout << "\n---by index---\n";
-    std::cout << "TASK -> add 1, 2, 3 by index\n";
-
+    std::cout << "TASK -> cout by index\n";
+    buffer.pushBack(3);
+    buffer.pushBack(2);
+    buffer.pushBack(1);
 
     std::cout << '\n';
     buffer.Show(std::cout);
@@ -92,11 +99,11 @@ int main(){
     buffer.pushBack(1);
     buffer.pushBack(2);
     buffer.pushBack(3);
-    std::cout << "Buffer with max_capacity= " << buffer.getCapacity() << " and size= " << buffer.getSize() << "\n";
+    std::cout << "Buffer with max_capacity= " << buffer.getMaxCapacity() << " and size= " << buffer.getSize() << "\n";
     buffer.Show(std::cout);
 
-    buffer.setCapacity(10);
-    std::cout << "\nBuffer with max_capacity= " << buffer.getCapacity() << " and size= " << buffer.getSize() << "\n";
+    buffer.setMaxCapacity(10);
+    std::cout << "\nBuffer with max_capacity= " << buffer.getMaxCapacity() << " and size= " << buffer.getSize() << "\n";
     buffer.clear();
 
     std::cout << "\n\n\nTest algo\n";
