@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include "pugixml.hpp"
 #include <iomanip>
 #include <sstream>
@@ -120,7 +120,7 @@ int main(int argc, char* argv[]) {
 
                     // Проверяем, если параметр vnom не равен "-", то пересчитываем значение value и меняем nominal
                     if (param_vnom != "-") {
-                        double conversionRate = std::stod(param_vnom) / std::stod(nominal);
+                        double conversionRate = std::stol(param_vnom) / std::stod(nominal);
                         cout << value_str << '\n';
                         char* endptr;
                         float t =std::strtof(value_str.c_str(), &endptr);
